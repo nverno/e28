@@ -18,7 +18,7 @@ const displayQuote = ({ text }, guessed) => {
     let letter;
     const isAlpha = l.match(/[a-zA-Z]/);
 
-    if (isAlpha && !(l in guessed)) {
+    if (isAlpha && !(l.toLowerCase() in guessed)) {
       finished = false;
       letter = '_';
     } else {
@@ -34,8 +34,8 @@ const displayQuote = ({ text }, guessed) => {
   return finished;
 };
 
-const winner = () => {
-  document.getElementByClassName('message')[0].innerText = 'Winner!!';
+const displayWinner = () => {
+  document.getElementsByClassName('message')[0].innerText = 'Winner!!';
 };
 
 const displayAuthor = ({ author }) => {
@@ -50,16 +50,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.quote = quote;
 
   window.submitGuess = () => {
-    let guess = document.getElementById('guess').value;
+    const guessDiv = document.getElementById('guess');
+    const guess = guessDiv.value;
+    if (!guess.length) return ;
     const quoteContainer = document.getElementById('quote-container');
 
-    guessed[guess] = true;
-    if (quoteContainer.appendChild(displayQuote(quote, guessed))) {
-      winner();
-    };
+    guessed[guess.toLowerCase()] = true;
+    const finished = displayQuote(quote, guessed);
+    // quoteContainer.appendChild(finished);
 
-    guess.value = '';
-    return false;
+    if (finished) displayWinner();
+
+    guessDiv.value = '';
   };
 
   displayAuthor(quote);

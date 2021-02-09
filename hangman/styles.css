@@ -32,3 +32,8 @@ body {
   margin-top: 10px;
   padding-left: 10px;
 }
+
+.message {
+  text-align: center;
+  color: green;
+}
