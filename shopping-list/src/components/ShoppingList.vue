@@ -1,11 +1,14 @@
 <template>
   <div class="shopping">
     <h1>Shopping List</h1>
+    <label>Qty:
+      <input v-model="qty" type="number">
+    </label>
 
     <label>
       Item:
-      <input v-model="item" type="text" />
-      <button v-on:click="addItem()">Add</button>
+      <input v-model="item" @keyup.enter="addItem()" type="text" />
+      <button @click="addItem()">Add</button>
     </label>
 
     <p v-if="!hasItems()">
@@ -14,10 +17,13 @@
 
     <div v-if="hasItems()" class="list">
       <div>
-        <p>Item count: {{ items.length }}</p>
+        <p>Item count: {{ total }}</p>
       </div>
       <ul>
-        <li v-for="it in items" v-bind:key="it">{{ it }}</li>
+        <li v-for="it in items" v-bind:key="it">
+          <button @click="remove(it)">x</button>
+          {{ it }}
+        </li>
       </ul>
     </div>
   </div>
@@ -30,16 +36,36 @@ export default {
   data() {
     return {
       item: null,
-      items: [],
+      qty: null,
+      items: [
+        { item: 'Oranges', qty: 4 },
+        { item: 'Milk (gallon)', qty: 1 },
+        { item: 'Sweet potatoes', qty: 6 },
+        { item: 'Garlic clove', qty: 1 },
+      ],
     };
+  },
+  computed: {
+    total() {
+      return this.items.reduce((acc, item) => acc + item.qty, 0);
+    }
   },
   methods: {
     hasItems() {
       return this.items.length > 0;
     },
+    remove({ item, }) {
+      const ind = this.items.findIndex(it => it.item === item);
+      if (ind !== -1)
+        this.items.splice(ind, 1);
+    },
     addItem() {
-      this.items.push(this.item);
+      this.items.push({
+        item: this.item,
+        qty: this.qty,
+      });
       this.item = '';
+      this.qty = null;
     },
   },
 };
