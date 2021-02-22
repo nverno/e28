@@ -1,0 +1,88 @@
+.pending {
+  color: var(--np-pending) !important;
+}
+
+.active {
+  color: var(--np-active) !important;
+  background-color: var(--np-active-background);
+  outline: 1px solid var(--np-active-border);
+}
+
+code span {
+  padding: .1em 0;
+}
+
+code span.return:before {
+  content: '\23CE';
+  color: var(--np-active) !important;
+  padding: 0 .5em;  
+}
+
+code span.active:after,
+code span.active:before {
+  color: var(--np-active-background);
+}
+
+code span.incorrect {
+  background-color: var(--np-incorrect);
+  outline-color: var(--np-backtrack);
+  color: var(--np-active);
+}
+code span.incorrect:after,
+code span.incorrect:before {
+  color: var(--np-incorrect);
+}
+
+/* 
+ * When incorrect text has been entered, and must backspace
+ * before continuing 
+ */
+.backtrack {
+  --np-active-background: var(--np-backtrack);
+}
+
+code.backtrack span.active {
+  position: relative;
+  /* background-color: var(--np-backtrack); */
+  outline: none;
+}
+code.backtrack .active:after {
+  background-color: var(--np-backtrack-missed);
+}
+code.backtrack span.active:after,
+code.backtrack span.active:before {
+  color: var(--np-backtrack);
+}
+code.backtrack span.active:after {
+  content: '\21e6';
+  font-size: 2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+code .collateral {
+  color: var(--np-collateral) !important;
+}
+
+/* 
+ * Finished: highlight missed chars
+ */
+code.finished span {
+  color: var(--np-finished);
+}
+code.finished span.wascollateral {
+  color: var(--np-wascollateral);
+}
+code.finished span.wasincorrect {
+  color: var(--np-wasincorrect);
+}
+
+/* Paused */
+.paused {
+  --np-active-background: var(--np-paused-background);
+}
+code.paused span.active {
+  outline: none;
+}

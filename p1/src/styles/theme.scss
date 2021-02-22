@@ -1,0 +1,15 @@
+:root {
+  --np-active-background: #47d42b;
+  --np-active-border: #47cf2b;
+  --np-active: #fff;
+  --np-paused-background: #ffc40d;
+  --np-paused-border: #f3b700;
+  --np-pending: #657b83;
+  --np-incorrect: #e63d3d;
+  --np-backtrack: #d51b1b;
+  --np-backtrack-missed: #fdf6e3;
+  --np-collateral: #737373;
+  --np-wascollateral: #f2895d;
+  --np-finished: grey;
+  --np-wasincorrect: var(--np-backtrack);
+}
