@@ -11,24 +11,23 @@
         <button type="submit">Submit guess</button>
       </form>
 
-      <div class="feedback" :class="feedbackClass">
-        <div v-if="correct" class="correct">
-          You get it! Nice work.
-          <button @click="restart">Play Again</button>
-        </div>
-        <div v-else-if="guessed" class="incorrect">
-          Sorry, that's incorrect. Guess Again
-        </div>
-      </div>
+      <Feedback :guessed="guessed" :correct="correct" :restart="restart" />
     </div>
   </section>
 </template>
 
 <script>
+import Feedback from './Feedback.vue';
+
 export default {
   name: 'GuessWord',
+  components: {
+    Feedback,
+  },
   props: {},
   data() {
+    this.restart = this.restart.bind(this);
+
     return {
       guessed: false,
       guess: null,
@@ -57,9 +56,9 @@ export default {
       }
       return arr.join('');
     },
-    feedbackClass() {
-      return this.guessed && this.correct ? 'correct' : 'incorrect';
-    },
+    /* feedbackClass() {
+     *   return this.guessed && this.correct ? 'correct' : 'incorrect';
+     * }, */
   },
   methods: {
     chooseWord() {
@@ -99,21 +98,5 @@ section {
 .scramble {
   font-size: 18px;
   font-weight: 700;
-}
-
-.feedback {
-  color: #fff;
-  margin-top: 10px;
-  div {
-    text-align: center;
-    border-radius: 10px;
-  }
-  .correct {
-    background-color: forestgreen;
-  }
-
-  .incorrect {
-    background-color: darkred;
-  }
 }
 </style>
