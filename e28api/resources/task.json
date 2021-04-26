@@ -1,0 +1,24 @@
+{
+  "permission_level": 0,
+  "fields": {
+    "name": {
+      "type": "string",
+      "validators": [
+        "required"
+      ]
+    },
+    "done": {
+      "type": "boolean",
+      "validators": [
+        "required"
+      ]
+    },
+    "tasklist_id": {
+      "type": "integer",
+      "validators": [
+        "required",
+        "numeric"
+      ]
+    }
+  }
+}

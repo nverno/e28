@@ -1,0 +1,14 @@
+{
+  "seeds": [
+    {
+      "tasklist_id": 1,
+      "name": "p1",
+      "done": true
+    },
+    {
+      "tasklist_id": 1,
+      "name": "p2",
+      "done": false
+    }
+  ]
+}
