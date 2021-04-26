@@ -9,7 +9,7 @@ const app = createApp(App);
 app.config.globalProperties.$filters = {
   minutes(seconds) {
     const mins = Math.floor(seconds / 60),
-      secs = seconds - mins * 60;
+          secs = seconds - mins * 60;
     return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
   },
 
