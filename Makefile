@@ -14,7 +14,7 @@ all: help
 .PHONY: deploy-% sync
 sync:             ## Sync git repo on production
 	$(info Syncing remote repo)
-	ssh -t ${SSH_HOST} "cd ${REMOTE_PATH} && git pull"
+	ssh -t ${SSH_HOST} "cd ${REMOTE_PATH} && git pull && cd e28api && bash setup"
 
 deploy-%: % sync  ## Builds and deploys project to production
 	$(info Deploying $<...)
