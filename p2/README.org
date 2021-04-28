@@ -1,5 +1,9 @@
-#+TITLE: 
+#+TITLE: Project 2
+* Project 2
+By: Noah Peart
+Production URL: http://e28p2.nverno.me
 
-[[https://nverno.github.io/typing/][Live]]
-
-Practice typing code to increase speed and discover problem keys.
+* Outside Resources
+n/a
+* Notes for instructor
+n/a
