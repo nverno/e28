@@ -1,6 +1,13 @@
 {
   "permission_level": 0,
   "fields": {
+    "user_id": {
+      "type": "integer",
+      "validators": [
+        "required",
+        "numeric"
+      ]
+    },
     "name": {
       "type": "string",
       "validators": [

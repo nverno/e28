@@ -3,7 +3,8 @@
     {
       "name": "e28",
       "url": "https://hesweb.dev/e28/schedule",
-      "xpath": ""
+      "xpath": "",
+      "user_id": 1
     }
   ]
 }
