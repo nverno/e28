@@ -73,12 +73,12 @@ export default {
     logout() {
       /* FIXME: axios.post('logout') ??? */
       this.$store.commit('setUser', false);
-    }
+    },
   },
   watch: {
     user() {
       this.loadLists();
-    }
+    },
   },
   mounted() {
     this.loadLists();

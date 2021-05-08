@@ -56,6 +56,6 @@ export const store = createStore({
           return list.id == id;
         }, id)[0];
       };
-    }
+    },
   },
 });

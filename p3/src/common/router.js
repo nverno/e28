@@ -16,8 +16,8 @@ const routes = [
     path: '/list/new',
     component: () => import('@/components/pages/ListCreatePage.vue'),
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: '/account',
