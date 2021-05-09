@@ -126,7 +126,7 @@ export default {
     runQuery() {
       if (this.validate(["url", "xpath"])) {
         runQuery(this.data.url, this.data.xpath).then((res) => {
-          console.log("Xpath: ", res);
+          /* console.log("Xpath: ", res); */
           this.results = this.resultsToList(res);
         });
       }
