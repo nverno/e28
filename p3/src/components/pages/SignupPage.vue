@@ -94,12 +94,23 @@ export default {
           if (response.data.errors) {
             this.backendErrors = response.data.errors;
           } else {
+            this.login();
             this.errors = null;
             this.backendErrors = null;
             this.data = [];
           }
         });
       }
+    },
+    login() {
+      axios.post("login", this.data).then((response) => {
+        if (response.data.authenticated) {
+          this.$store.commit("setUser", response.data.user);
+          this.$router.push('/');
+        } else {
+          this.errors = response.data.errors;
+        }
+      });
     },
   },
 };

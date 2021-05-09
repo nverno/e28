@@ -4,7 +4,7 @@
       Create task lists from other sites using xpath
     </p>
 
-    <ShowLists :lists="lists" />
+    <ShowLists v-if="loggedIn" :lists="lists" />
   </div>
 </template>
 
@@ -19,6 +19,9 @@ export default {
   computed: {
     lists() {
       return this.$store.state.lists;
+    },
+    loggedIn() {
+      return !!this.$store.state.user;
     },
   },
 }

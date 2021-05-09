@@ -35,8 +35,12 @@
         </li>
       </ul>
     </nav>
+    <p v-if="user">
+      Welcome, {{ user.name }}
+    </p>
 
-    <router-view v-on:update-lists="loadLists"></router-view>
+    <router-view @update-lists="loadLists"></router-view>
+
   </div>
 </template>
 
