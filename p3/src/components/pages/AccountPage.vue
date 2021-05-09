@@ -79,21 +79,6 @@ export default {
     },
   },
   methods: {
-    /* loadLists() {
-     *   if (this.user) {
-     *     axios
-     *       .get("favorite/query?user_id=" + this.user.id)
-     *       .then((response) => {
-     *         this.favorites = response.data.favorite.map(
-     *           (favorite) => {
-     *             return this.$store.getters.getProductById(
-     *               favorite.product_id
-     *             );
-     *           }
-     *         );
-     *       });
-     *   }
-     * }, */
     demoLogin() {
       this.data = {
         email: "jill@harvard.edu",
@@ -111,22 +96,7 @@ export default {
         }
       });
     },
-    logout() {
-      axios.post("logout").then((response) => {
-        if (response.data.success) {
-          this.$store.commit("setUser", false);
-        }
-      });
-    },
   },
-  /* watch: {
-   *   user() {
-   *     this.loadFavorites();
-   *   },
-   * },
-   * mounted() {
-   *   this.loadFavorites();
-   * }, */
 };
 </script>
 
