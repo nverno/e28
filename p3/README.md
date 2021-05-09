@@ -14,5 +14,6 @@ Production URL: <http://e28p3.nverno.me>
 # Notes for instructor
 
 -   CORS requests are forwarded from simple proxy at
-    <https://e28-proxy.herokuapp.com/> ([source](https://github.com/nverno/e28-proxy)).
+    <https://e28-proxy.herokuapp.com/> ([source](https://github.com/nverno/e28-proxy)).  On first request it may take a
+    little longer while the proxy to starts up.
 
