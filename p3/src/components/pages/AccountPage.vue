@@ -20,11 +20,6 @@
 
     <div v-else id="loginForm">
       <h2>Login</h2>
-      <!-- FIXME: remove -->
-      <small>
-        (Form is prefilled for demonstration purposes; remove in final
-        application)
-      </small>
       <div>
         <label>
           Email:
@@ -48,8 +43,11 @@
         </label>
       </div>
 
-      <button v-on:click="login" data-test="login-button">Login</button>
-
+      <div class="login-buttons">
+        <button @click="login" data-test="login-button">Login</button>
+        <button @click="demoLogin" data-test="demo-login-button">Demo Login</button>
+      </div>
+      
       <ul v-if="errors">
         <li class="error" v-for="(error, index) in errors" :key="index">
           {{ error }}
@@ -65,11 +63,9 @@ import { axios } from "@/common/app.js";
 export default {
   data() {
     return {
-      // Form is prefilled for demonstration purposes; remove in final application
-      // jill@harvard.edu/asdfasdf is one of our seed users from e28api/seeds/user.json
       data: {
-        email: "jill@harvard.edu",
-        password: "asdfasdf",
+        email: '',
+        password: '',
       },
       errors: null,
     };
@@ -98,10 +94,18 @@ export default {
      *       });
      *   }
      * }, */
+    demoLogin() {
+      this.data = {
+        email: "jill@harvard.edu",
+        password: "asdfasdf",
+      };
+      this.login();
+    },
     login() {
       axios.post("login", this.data).then((response) => {
         if (response.data.authenticated) {
           this.$store.commit("setUser", response.data.user);
+          this.$router.push({ path: '/' });
         } else {
           this.errors = response.data.errors;
         }
@@ -126,3 +130,10 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.login-buttons {
+  button {
+    margin-right: 10px;
+  }
+}
+</style>

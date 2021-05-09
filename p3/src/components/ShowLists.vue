@@ -1,14 +1,16 @@
 <template>
-  <div id="lists">
-
+  <div id="show-lists">
+    <h2>Lists</h2>
+    <div id="lists">
       <router-link
+        class="list-link"
         v-for="list in lists"
         :key="list.id"
         :to="`/list/${list.id}`">
-        <!-- <ShowList :list="list" :items> -->
+        <!-- Show [completed/total] ??? -->
         {{ list.name }}
       </router-link>
-
+    </div>
   </div>
 </template>
 
@@ -17,7 +19,6 @@ export default {
   name: "ShowLists",
   props: {
     lists: Array,
-    allItems: Array,
   },
 }
 </script>

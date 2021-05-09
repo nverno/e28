@@ -36,11 +36,13 @@
       </ul>
     </nav>
 
-    <router-view @update-lists="loadLists"></router-view>
+    <router-view v-on:update-lists="loadLists"></router-view>
   </div>
 </template>
 
 <script>
+import '@/assets/css/app.scss';
+
 export default {
   name: 'App',
   data() {
@@ -69,6 +71,10 @@ export default {
       if (this.user) {
         this.$store.dispatch('fetchLists', { userId: this.user.id });
       }
+      else {
+        this.$store.commit('setLists', []);
+        this.$store.dispatch('authUser');
+      }
     },
     logout() {
       /* FIXME: axios.post('logout') ??? */
@@ -91,50 +97,3 @@ document.addEventListener("DOMContentLoaded", () => {
   window.api = api;
 });
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-nav ul {
-  list-style-type: none;
-  li {
-    display: inline-block;
-
-    a:link, a:visited, a:hover, a:active {
-      display: inline-block;
-      text-transform: capitalize;
-      padding: 5px;
-      margin: 5px;
-      cursor: pointer;
-      color: blue;
-      font-weight: bold;
-    }
-    a.router-link-active:link,
-    a.router-link-active:visited,
-    a.router-link-active:hover,
-    a.router-link-active:active {
-      text-decoration: none;
-      color: black;
-      background-color: lightblue;
-      cursor: inherit;
-    }
-
-    .logout {
-      display: inline-block;
-      color: blue;
-
-      &:hover {
-        text-transform: capitalize;
-      }
-    }
-  }
-
-}
-</style>

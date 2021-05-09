@@ -1,13 +1,17 @@
 <template>
   <div id="list-page">
-    <div v-if="list">
-      <ShowList :list="list" :items="items" />
+    <div v-if="listNotFound">
+      <p>List {{ id }} not found!</p>
+    </div>
+
+    <div v-else-if="list">
+      <ShowList :list="list" />
     </div>
   </div>
 </template>
 
 <script>
-import ShowList from '@/components/list/ShowList.vue';
+import ShowList from '@/components/ShowList.vue';
 
 export default {
   name: "ListPage",
@@ -16,18 +20,21 @@ export default {
   },
   props: {
     id: String,
-    lists: Array,
-    allItems: Array,
   },
   data() {
-    return {}
+    return {};
   },
   computed: {
     list() {
-      return this.lists.filter(l => l.id == this.id);
+      return this.$store.getters.getListById(this.id);
     },
-    items() {
-      return this.allItems.filter(e => e.tasklist_id == this.id);
+    listNotFound() {
+      return this.list == null;
+    },
+  },
+  methods: {
+    updateList() {
+      this.$store.dispatch('fetchLists', this.$store.state.user.id);
     },
   },
 }

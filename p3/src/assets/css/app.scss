@@ -1,0 +1,197 @@
+@import './theme.scss';
+
+/*----------------------------------------------------
+MAIN LAYOUT
+-----------------------------------------------------*/
+/* universal box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    /* http://snook.ca/archives/html_and_css/font-size-with-rem */
+    font-size: 62.5%;
+
+    color: var(--black);
+    font-family: var(--sans-serif-font);
+
+    /* Have the scroll bars always on so there's not a shift in the layout
+    when going from a non-scrolling page to a scrolling-page */
+    overflow-y: scroll;
+}
+
+body {
+    /* Default font-size */
+    font-size: 1.6rem;
+    width: 75%;
+    margin: auto;
+}
+
+h2 {
+    font-size: 2.75rem;
+}
+
+// #app {
+//   font-family: Avenir, Helvetica, Arial, sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   text-align: center;
+//   color: #2c3e50;
+//   margin-top: 60px;
+// }
+
+#app {
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#logo {
+    /* Actual width is 636; displaying at half-size for retina screens */
+    width: 318px;
+    margin-top: 15px;
+}
+
+/* 
+https://v3.vuejs.org/api/built-in-components.html#transition 
+https://v3.vuejs.org/guide/transitions-enterleave.html#transitioning-single-elements-components
+*/
+
+/* Starting state */
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+/* Active state */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+nav ul {
+  list-style-type: none;
+  li {
+    display: inline-block;
+
+    a:link, a:visited, a:hover, a:active {
+      display: inline-block;
+      text-transform: capitalize;
+      padding: 5px;
+      margin: 5px;
+      cursor: pointer;
+      color: var(--blue);
+      font-weight: bold;
+    }
+    a.router-link-active:link,
+    a.router-link-active:visited,
+    a.router-link-active:hover,
+    a.router-link-active:active {
+      text-decoration: none;
+      color: var(--black);
+      background-color: var(--light-blue);
+      cursor: inherit;
+    }
+
+    .logout {
+      display: inline-block;
+      color: var(--blue);
+
+      &:hover {
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+/*----------------------------------------------------
+Forms
+-----------------------------------------------------*/
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 20px 0 5px 0;
+    font-weight: bold;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+textarea {
+  font-size: 1.6rem;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid var(--silver);
+}
+
+.form-input-error {
+  border: 1px solid var(--red);
+}
+
+label.form-checkbox-label {
+  text-transform: none;
+}
+
+.form-group {
+  margin: 20px 0;
+}
+
+.form-help {
+  font-size: 1.5rem;
+  color: var(--darkgray);
+  margin-top: 5px;
+}
+
+.form-feedback {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.form-feedback-error {
+    color: var(--red);
+}
+
+.form-feedback-success {
+    color: var(--green);
+}
+
+button {
+    background-color: var(--blue);
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 0;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--dark-blue);
+}
+
+input[type=checkbox],
+input[type=radio] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+input[type=radio] {
+    bottom: 2px;
+}

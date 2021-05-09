@@ -9,15 +9,17 @@
 </template>
 
 <script>
-import ShowLists from '@/components/list/ShowLists.vue';
+import ShowLists from '@/components/ShowLists.vue';
 
 export default {
   name: "HomePage",
-  props: {
-    lists: Array,
-  },
   components: {
     "ShowLists": ShowLists,
+  },
+  computed: {
+    lists() {
+      return this.$store.state.lists;
+    },
   },
 }
 </script>
