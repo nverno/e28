@@ -4,6 +4,9 @@ By: Noah Peart
 Production URL: http://e28p3.nverno.me
 
 * Outside Resources
-n/a
+- Xpath is run via [[https://preview.npmjs.com/package/xpath][xpath]] (some basic examples can be found there).
+
 * Notes for instructor
-n/a
+- CORS requests are forwarded from simple proxy at
+  https://e28-proxy.herokuapp.com/ ([[https://github.com/nverno/e28-proxy][source]]).
+
