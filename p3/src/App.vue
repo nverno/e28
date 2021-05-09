@@ -46,7 +46,7 @@
 
 <script>
 import '@/assets/css/app.scss';
-/* import { axios } from "@/common/app.js"; */
+import { axios } from "@/common/app.js";
 
 export default {
   name: 'App',
@@ -78,16 +78,17 @@ export default {
       }
       else {
         this.$store.commit('setLists', []);
+        this.$store.dispatch('authUser');
       }
     },
     logout() {
       /* FIXME: on successful response */
       this.$store.commit('setUser', null);
-      /* axios.post('logout').then((response) => {
-       *   if (response.data.success) {
-       *     this.$router.push('/');
-       *   }
-       * }); */
+      axios.post('logout').then((response) => {
+        if (response.data.success) {
+          this.$router.push('/');
+        }
+      });
     },
   },
   watch: {

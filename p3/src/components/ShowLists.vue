@@ -1,15 +1,18 @@
 <template>
   <div id="show-lists">
     <h2>Lists</h2>
-    <div id="lists">
-      <router-link
-        class="list-link"
-        v-for="list in lists"
-        :key="list.id"
-        :to="`/list/${list.id}`">
-        <!-- Show [completed/total] ??? -->
-        {{ list.name }}
-      </router-link>
+    
+    <div>
+      <ul id="lists">
+        <li v-for="{ id, name, } in lists" :key="id">
+          <router-link
+            class="list-link"
+            :to="`/list/${id}`">
+            <!-- Show [completed/total] ??? -->
+            {{ name }}
+          </router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -23,6 +26,22 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+#show-lists {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    width: 40%;
+    margin: 0 auto;
+    border-bottom: 1px solid grey;
+  }
+}
 
+#lists {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: baseline;
+}
 </style>
