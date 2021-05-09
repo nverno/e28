@@ -2,7 +2,9 @@
   <div class="checkbox" @click="toggle(item)">
     <font-awesome-icon v-if="item.done == '1'" icon="check-square" />
     <font-awesome-icon v-else icon="square" />
-    {{ item.name }}
+    <span :class="item.done == '1' ? 'done' : ''">
+      {{ item.name }}
+    </span>
   </div>
 </template>
 
@@ -28,8 +30,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .checkbox {
+  display: inline-flex;
   cursor: pointer;
+
+  span {
+    margin-left: 5px;
+  }
+}
+.done {
+  text-decoration: line-through;
 }
 </style>

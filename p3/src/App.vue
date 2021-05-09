@@ -102,7 +102,7 @@ export default {
 }
 
 // Testing
-import * as api from './util/list_api';
+import * as api from './common/list_api';
 document.addEventListener("DOMContentLoaded", () => {
   window.api = api;
 });
