@@ -35,5 +35,5 @@ All data associated with lists and users is managed by Vuex ('@/common/store.js'
 
 # E2E Testing screenshot
 
-\![P3, XPath TODOs, passing E2E tests](![img](https://raw.githubusercontent.com/nverno/e28/main/p3/tests/e2e-tests.png))
+[P3 - Xpath Todos, passing E2E tests](https://raw.githubusercontent.com/nverno/e28/main/p3/tests/e2e-tests.png)
 
