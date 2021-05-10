@@ -90,7 +90,7 @@ import { runQuery } from "@/common/list_api";
 
 const examples = [
   {
-    name: 'e28',
+    name: 'e28 Schedule',
     url: 'https://hesweb.dev/e28/schedule',
     xpath: '//h2/a/text()',
   },
@@ -98,7 +98,12 @@ const examples = [
     name: 'CP Algos',
     url: "https://cp-algorithms.com/",
     xpath: "//h3/text()",
-  }
+  },
+  {
+    name: 'e28 Projects',
+    url: 'https://hesweb.dev/e28/projects',
+    xpath: "//div[@id='content']//li/p/a/text()",
+  },
 ];
 
 export default {

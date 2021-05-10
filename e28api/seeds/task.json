@@ -2,12 +2,17 @@
   "seeds": [
     {
       "tasklist_id": 1,
-      "name": "p1",
+      "name": "Project 1: Fundamentals",
       "done": true
     },
     {
       "tasklist_id": 1,
-      "name": "p2",
+      "name": "Project 2: SPA, SFCs, server interaction",
+      "done": true
+    },
+    {
+      "tasklist_id": 1,
+      "name": "Project 3: Vuex, authentication, validation, testing",
       "done": false
     }
   ]

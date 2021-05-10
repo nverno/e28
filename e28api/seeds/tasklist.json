@@ -1,9 +1,9 @@
 {
   "seeds": [
     {
-      "name": "e28",
-      "url": "https://hesweb.dev/e28/schedule",
-      "xpath": "",
+      "name": "e28 Projects",
+      "url": "https://hesweb.dev/e28/projects",
+      "xpath": "//div[@id='content']//li/p/a/text()",
       "user_id": 1
     }
   ]
