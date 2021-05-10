@@ -1,6 +1,6 @@
 <template>
   <div id="show-lists">
-    <h2>Lists</h2>
+    <h2 data-test="lists-header">Lists</h2>
     
     <div>
       <ul id="lists">
@@ -8,7 +8,7 @@
           <router-link
             class="list-link"
             :to="`/list/${id}`">
-            <!-- Show [completed/total] ??? -->
+            <!-- TODO: Show [completed/total] ??? -->
             {{ name }}
           </router-link>
         </li>

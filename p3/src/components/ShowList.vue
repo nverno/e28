@@ -1,12 +1,12 @@
 <template>
   <div class="list">
     <div v-if="list">
-      <h3>
+      <h3 data-test="list-header">
         <a :href="list.url" target="_blank"><font-awesome-icon icon="link" /></a>
         {{ list.name }}
       </h3>
       <ul>
-        <li v-for="item in list.items" :key="item.id">
+        <li v-for="item in list.items" :key="item.id" class="list-item">
           <ListItem :item="item" />
         </li>
       </ul>

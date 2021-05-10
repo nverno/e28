@@ -2,20 +2,6 @@
   <div id="account-page">
     <div v-if="user">
       <h2 data-test="welcome-message">Hi, {{ user.name }}!</h2>
-
-      <!-- <div id="favorites">
-           <strong>Your Favorites</strong>
-           <p v-if="favorites && favorites.length == 0">
-           No favorites yet.
-           </p>
-           <li v-for="(favorite, key) in favorites" v-bind:key="key">
-           {{ favorite.name }}
-           </li>
-           </div> -->
-
-      <button v-on:click="logout" data-test="logout-button">
-        Logout
-      </button>
     </div>
 
     <div v-else id="loginForm">

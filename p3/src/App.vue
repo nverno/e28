@@ -1,12 +1,5 @@
 <template>
   <div>
-    <!-- TODO: logo -->
-    <!-- <img
-         alt="ZipFoods logo"
-         id="logo"
-         src="@/assets/images/zipfoods-logo.png"
-         /> -->
-
     <nav>
       <ul>
         <li>
@@ -35,7 +28,7 @@
         </li>
       </ul>
     </nav>
-    <p v-if="user">
+    <p v-if="user" data-test="welcome-banner">
       Welcome, {{ user.name }}
     </p>
 
@@ -78,6 +71,7 @@ export default {
       }
       else {
         this.$store.commit('setLists', []);
+        this.$store.dispatch('authUser');
       }
     },
     logout() {
@@ -96,14 +90,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('authUser');
     this.loadLists();
   },
 }
-
-// Testing
-/* import * as api from './common/list_api';
- * document.addEventListener("DOMContentLoaded", () => {
- *   window.api = api;
- * }); */
 </script>

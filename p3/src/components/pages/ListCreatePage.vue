@@ -55,8 +55,8 @@
         </div>
 
         <div id="query-controls">
-          <button @click="runQuery" data-test="xpath-button">Run Xpath Query</button>
-          <button @click="runExample" data-test="xpath-button">Run Example</button>
+          <button @click="runQuery" data-test="run-xpath-button">Run Xpath Query</button>
+          <button @click="runExample" data-test="run-example-button">Run Example</button>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
         </small>
         <div id="query-results">
           <ul v-if="results">
-            <li v-for="(res, index) in results" :key="index">{{ res }}</li>
+            <li v-for="(res, index) in results" :key="index" class="result-item">{{ res }}</li>
           </ul>
         </div>
       </div>
@@ -90,18 +90,18 @@ import { runQuery } from "@/common/list_api";
 
 const examples = [
   {
-    name: 'e28 Schedule',
-    url: 'https://hesweb.dev/e28/schedule',
-    xpath: '//h2/a/text()',
+    name: "e28 Schedule",
+    url: "https://hesweb.dev/e28/schedule",
+    xpath: "//h2/a/text()",
   },
   {
-    name: 'CP Algos',
+    name: "CP Algos",
     url: "https://cp-algorithms.com/",
     xpath: "//h3/text()",
   },
   {
-    name: 'e28 Projects',
-    url: 'https://hesweb.dev/e28/projects',
+    name: "e28 Projects",
+    url: "https://hesweb.dev/e28/projects",
     xpath: "//div[@id='content']//li/p/a/text()",
   },
 ];
@@ -144,7 +144,6 @@ export default {
     runQuery() {
       if (this.validate(["url", "xpath"])) {
         runQuery(this.data.url, this.data.xpath).then((res) => {
-          /* console.log("Xpath: ", res); */
           this.results = this.resultsToList(res);
         });
       }
@@ -175,7 +174,7 @@ export default {
           .then((response) => {
             if (response.data.success) {
               let tid = response.data.tasklist.id,
-                  items = this.createItems(tid);
+                items = this.createItems(tid);
               Promise.all(items).then(() => {
                 this.$emit("update-lists");
               });
