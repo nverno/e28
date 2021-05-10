@@ -78,15 +78,14 @@ export default {
       }
       else {
         this.$store.commit('setLists', []);
-        this.$store.dispatch('authUser');
       }
     },
     logout() {
-      /* FIXME: on successful response */
-      this.$store.commit('setUser', null);
       axios.post('logout').then((response) => {
         if (response.data.success) {
+          this.$store.commit('setUser', null);
           this.$router.push('/');
+          this.$emit('update-lists');
         }
       });
     },
@@ -97,14 +96,14 @@ export default {
     },
   },
   mounted() {
-    /* this.$store.dispatch('authUser'); */
+    this.$store.dispatch('authUser');
     this.loadLists();
   },
 }
 
 // Testing
-import * as api from './common/list_api';
-document.addEventListener("DOMContentLoaded", () => {
-  window.api = api;
-});
+/* import * as api from './common/list_api';
+ * document.addEventListener("DOMContentLoaded", () => {
+ *   window.api = api;
+ * }); */
 </script>

@@ -164,6 +164,7 @@ export default {
               });
               this.backendErrors = [];
               this.errors = [];
+              this.$router.push(`/list/${tid}`);
             } else {
               this.backendErrors = response.data.errors;
             }
