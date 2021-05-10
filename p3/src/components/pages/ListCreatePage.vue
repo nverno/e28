@@ -88,6 +88,19 @@ import Validator from "validatorjs";
 import ErrorField from "@/components/ErrorField.vue";
 import { runQuery } from "@/common/list_api";
 
+const examples = [
+  {
+    name: 'e28',
+    url: 'https://hesweb.dev/e28/schedule',
+    xpath: '//h2/a/text()',
+  },
+  {
+    name: 'CP Algos',
+    url: "https://cp-algorithms.com/",
+    xpath: "//h3/text()",
+  }
+];
+
 export default {
   name: "ListCreatePage",
   props: {},
@@ -132,8 +145,7 @@ export default {
       }
     },
     runExample() {
-      this.data.url = "https://cp-algorithms.com/";
-      this.data.xpath = "//h3/text()";
+      this.data = examples[Math.floor(Math.random() * examples.length)];
       this.runQuery();
     },
     resultsToList(res) {
@@ -158,7 +170,7 @@ export default {
           .then((response) => {
             if (response.data.success) {
               let tid = response.data.tasklist.id,
-                items = this.createItems(tid);
+                  items = this.createItems(tid);
               Promise.all(items).then(() => {
                 this.$emit("update-lists");
               });
